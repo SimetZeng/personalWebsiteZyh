@@ -1,0 +1,21 @@
+/* CSS Document */
+.massage{ margin-top:200px; margin-left:650px;}
+.body{ background-color:#000000; color:#FFFFFF;}
+
+/* 导航栏样式 */
+.nav1{ width:100%; height:50px; line-height:50px; background-color: #FFFFFF; color: #000000;}
+
+/* 导航栏项目列表样式 */
+.nav1 li{ text-align:left; list-style:none; float:left; padding-left:80px; padding-right:70px;line-height:50px;}
+
+/* 导航栏链接样式 */
+.nav1 a:link {color: #000000;text-decoration: none;}
+.nav1 a:hover {text-decoration: none; background: #000000; color: #FFFFFF;}
+
+/* 层样式 */
+#Layer1 {position:absolute;width:252px;height:200px;z-index:1;left: 320px;top: 150px;}
+#Layer2 {position:absolute;width:142px;height:60px;z-index:2;left: 410px;top: 270px;}
+.STYLE1 {font-size: 40px}
+.STYLE2 {color: #FF0000;font-family: "华文彩云";}
+
+.footer2{width:100%; height:200px; float:left; background-color:#FFFFFF; color:#000000;}

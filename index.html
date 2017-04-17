@@ -1,0 +1,369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>个人网站</title>
+
+
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/JavaScript">
+<!--
+function MM_timelinePlay(tmLnName, myID) { //v1.2
+  //Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,propNum,theObj,firstTime=false;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (myID == null) { myID = ++tmLn.ID; firstTime=true;}//if new call, incr ID
+  if (myID == tmLn.ID) { //if Im newest
+    setTimeout('MM_timelinePlay("'+tmLnName+'",'+myID+')',tmLn.delay);
+    fNew = ++tmLn.curFrame;
+    for (i=0; i<tmLn.length; i++) {
+      sprite = tmLn[i];
+      if (sprite.charAt(0) == 's') {
+        if (sprite.obj) {
+          numKeyFr = sprite.keyFrames.length; firstKeyFr = sprite.keyFrames[0];
+          if (fNew >= firstKeyFr && fNew <= sprite.keyFrames[numKeyFr-1]) {//in range
+            keyFrm=1;
+            for (j=0; j<sprite.values.length; j++) {
+              props = sprite.values[j]; 
+              if (numKeyFr != props.length) {
+                if (props.prop2 == null) sprite.obj[props.prop] = props[fNew-firstKeyFr];
+                else        sprite.obj[props.prop2][props.prop] = props[fNew-firstKeyFr];
+              } else {
+                while (keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]) keyFrm++;
+                if (firstTime || fNew==sprite.keyFrames[keyFrm-1]) {
+                  if (props.prop2 == null) sprite.obj[props.prop] = props[keyFrm-1];
+                  else        sprite.obj[props.prop2][props.prop] = props[keyFrm-1];
+        } } } } }
+      } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+      if (fNew > tmLn.lastFrame) tmLn.ID = 0;
+  } }
+}
+
+function MM_timelineGoto(tmLnName, fNew, numGotos) { //v2.0
+  //Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,lastKeyFr,propNum,theObj;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (numGotos != null)
+    if (tmLn.gotoCount == null) tmLn.gotoCount = 1;
+    else if (tmLn.gotoCount++ >= numGotos) {tmLn.gotoCount=0; return}
+  jmpFwd = (fNew > tmLn.curFrame);
+  for (i = 0; i < tmLn.length; i++) {
+    sprite = (jmpFwd)? tmLn[i] : tmLn[(tmLn.length-1)-i]; //count bkwds if jumping back
+    if (sprite.charAt(0) == "s") {
+      numKeyFr = sprite.keyFrames.length;
+      firstKeyFr = sprite.keyFrames[0];
+      lastKeyFr = sprite.keyFrames[numKeyFr - 1];
+      if ((jmpFwd && fNew<firstKeyFr) || (!jmpFwd && lastKeyFr<fNew)) continue; //skip if untouchd
+      for (keyFrm=1; keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]; keyFrm++);
+      for (j=0; j<sprite.values.length; j++) {
+        props = sprite.values[j];
+        if (numKeyFr == props.length) propNum = keyFrm-1 //keyframes only
+        else propNum = Math.min(Math.max(0,fNew-firstKeyFr),props.length-1); //or keep in legal range
+        if (sprite.obj != null) {
+          if (props.prop2 == null) sprite.obj[props.prop] = props[propNum];
+          else        sprite.obj[props.prop2][props.prop] = props[propNum];
+      } }
+    } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+  }
+  tmLn.curFrame = fNew;
+  if (tmLn.ID == 0) eval('MM_timelinePlay(tmLnName)');
+}
+
+function MM_initTimelines() { //v4.0
+    //MM_initTimelines() Copyright 1997 Macromedia, Inc. All rights reserved.
+    var ns = navigator.appName == "Netscape";
+    var ns4 = (ns && parseInt(navigator.appVersion) == 4);
+    var ns5 = (ns && parseInt(navigator.appVersion) > 4);
+    var macIE5 = (navigator.platform ? (navigator.platform == "MacPPC") : false) && (navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4);
+    document.MM_Time = new Array(1);
+    document.MM_Time[0] = new Array(11);
+    document.MM_Time["Timeline1"] = document.MM_Time[0];
+    document.MM_Time[0].MM_Name = "Timeline1";
+    document.MM_Time[0].fps = 7;
+    document.MM_Time[0][0] = new String("sprite");
+    document.MM_Time[0][0].slot = 1;
+    if (ns4)
+        document.MM_Time[0][0].obj = document["Layer1"] ? document["Layer1"].document["Layer2"] : document["Layer2"];
+    else if (ns5)
+        document.MM_Time[0][0].obj = document.getElementById("Layer2");
+    else
+        document.MM_Time[0][0].obj = document.all ? document.all["Layer2"] : null;
+    document.MM_Time[0][0].keyFrames = new Array(1, 15);
+    document.MM_Time[0][0].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[0] = new Array("101px", "101px", "101px", "101px", "101px", "101px", "101px", "101px", "101px", "101px", "101px", "101px", "101px", "101px", "101px");
+    else
+        document.MM_Time[0][0].values[0] = new Array(101,101,101,101,101,101,101,101,101,101,101,101,101,101,101);
+    document.MM_Time[0][0].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[1] = new Array("302px", "302px", "302px", "302px", "302px", "302px", "302px", "302px", "302px", "302px", "302px", "302px", "302px", "302px", "302px");
+    else
+        document.MM_Time[0][0].values[1] = new Array(302,302,302,302,302,302,302,302,302,302,302,302,302,302,302);
+    document.MM_Time[0][0].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][0].values[0].prop2 = "style";
+        document.MM_Time[0][0].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][1] = new String("sprite");
+    document.MM_Time[0][1].slot = 1;
+    if (ns4)
+        document.MM_Time[0][1].obj = document["Layer1"] ? document["Layer1"].document["Layer2"] : document["Layer2"];
+    else if (ns5)
+        document.MM_Time[0][1].obj = document.getElementById("Layer2");
+    else
+        document.MM_Time[0][1].obj = document.all ? document.all["Layer2"] : null;
+    document.MM_Time[0][1].keyFrames = new Array(16, 25, 34);
+    document.MM_Time[0][1].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][1].values[0] = new Array("100px", "100px", "101px", "101px", "102px", "102px", "103px", "103px", "103px", "104px", "104px", "103px", "103px", "103px", "102px", "102px", "102px", "101px", "101px");
+    else
+        document.MM_Time[0][1].values[0] = new Array(100,100,101,101,102,102,103,103,103,104,104,103,103,103,102,102,102,101,101);
+    document.MM_Time[0][1].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][1].values[1] = new Array("300px", "289px", "278px", "267px", "256px", "245px", "233px", "222px", "211px", "200px", "211px", "223px", "234px", "245px", "257px", "268px", "279px", "291px", "302px");
+    else
+        document.MM_Time[0][1].values[1] = new Array(300,289,278,267,256,245,233,222,211,200,211,223,234,245,257,268,279,291,302);
+    document.MM_Time[0][1].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][1].values[0].prop2 = "style";
+        document.MM_Time[0][1].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][2] = new String("sprite");
+    document.MM_Time[0][2].slot = 2;
+    if (ns4)
+        document.MM_Time[0][2].obj = document["Layer1"] ? document["Layer1"].document["Layer3"] : document["Layer3"];
+    else if (ns5)
+        document.MM_Time[0][2].obj = document.getElementById("Layer3");
+    else
+        document.MM_Time[0][2].obj = document.all ? document.all["Layer3"] : null;
+    document.MM_Time[0][2].keyFrames = new Array(1, 15);
+    document.MM_Time[0][2].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][2].values[0] = new Array("280px", "280px", "280px", "280px", "280px", "280px", "280px", "280px", "280px", "280px", "280px", "280px", "280px", "280px", "280px");
+    else
+        document.MM_Time[0][2].values[0] = new Array(280,280,280,280,280,280,280,280,280,280,280,280,280,280,280);
+    document.MM_Time[0][2].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][2].values[1] = new Array("210px", "210px", "210px", "210px", "210px", "210px", "210px", "210px", "210px", "210px", "210px", "210px", "210px", "210px", "210px");
+    else
+        document.MM_Time[0][2].values[1] = new Array(210,210,210,210,210,210,210,210,210,210,210,210,210,210,210);
+    document.MM_Time[0][2].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][2].values[0].prop2 = "style";
+        document.MM_Time[0][2].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][3] = new String("sprite");
+    document.MM_Time[0][3].slot = 2;
+    if (ns4)
+        document.MM_Time[0][3].obj = document["Layer1"] ? document["Layer1"].document["Layer3"] : document["Layer3"];
+    else if (ns5)
+        document.MM_Time[0][3].obj = document.getElementById("Layer3");
+    else
+        document.MM_Time[0][3].obj = document.all ? document.all["Layer3"] : null;
+    document.MM_Time[0][3].keyFrames = new Array(16, 25, 28, 34);
+    document.MM_Time[0][3].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][3].values[0] = new Array("280px", "280px", "280px", "281px", "281px", "281px", "281px", "281px", "281px", "281px", "278px", "277px", "276px", "276px", "277px", "277px", "278px", "279px", "280px");
+    else
+        document.MM_Time[0][3].values[0] = new Array(280,280,280,281,281,281,281,281,281,281,278,277,276,276,277,277,278,279,280);
+    document.MM_Time[0][3].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][3].values[1] = new Array("210px", "200px", "189px", "179px", "169px", "159px", "149px", "140px", "132px", "125px", "132px", "141px", "152px", "161px", "170px", "180px", "191px", "202px", "213px");
+    else
+        document.MM_Time[0][3].values[1] = new Array(210,200,189,179,169,159,149,140,132,125,132,141,152,161,170,180,191,202,213);
+    document.MM_Time[0][3].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][3].values[0].prop2 = "style";
+        document.MM_Time[0][3].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][4] = new String("sprite");
+    document.MM_Time[0][4].slot = 3;
+    if (ns4)
+        document.MM_Time[0][4].obj = document["Layer1"] ? document["Layer1"].document["Layer4"] : document["Layer4"];
+    else if (ns5)
+        document.MM_Time[0][4].obj = document.getElementById("Layer4");
+    else
+        document.MM_Time[0][4].obj = document.all ? document.all["Layer4"] : null;
+    document.MM_Time[0][4].keyFrames = new Array(1, 15);
+    document.MM_Time[0][4].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][4].values[0] = new Array("450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px");
+    else
+        document.MM_Time[0][4].values[0] = new Array(450,450,450,450,450,450,450,450,450,450,450,450,450,450,450);
+    document.MM_Time[0][4].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][4].values[1] = new Array("200px", "200px", "200px", "200px", "200px", "200px", "200px", "200px", "200px", "200px", "200px", "200px", "200px", "200px", "200px");
+    else
+        document.MM_Time[0][4].values[1] = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+    document.MM_Time[0][4].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][4].values[0].prop2 = "style";
+        document.MM_Time[0][4].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][5] = new String("sprite");
+    document.MM_Time[0][5].slot = 3;
+    if (ns4)
+        document.MM_Time[0][5].obj = document["Layer1"] ? document["Layer1"].document["Layer4"] : document["Layer4"];
+    else if (ns5)
+        document.MM_Time[0][5].obj = document.getElementById("Layer4");
+    else
+        document.MM_Time[0][5].obj = document.all ? document.all["Layer4"] : null;
+    document.MM_Time[0][5].keyFrames = new Array(16, 25, 34);
+    document.MM_Time[0][5].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][5].values[0] = new Array("450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "450px", "449px", "449px", "449px", "449px", "449px", "449px");
+    else
+        document.MM_Time[0][5].values[0] = new Array(450,450,450,450,450,450,450,450,450,450,450,450,450,449,449,449,449,449,449);
+    document.MM_Time[0][5].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][5].values[1] = new Array("200px", "191px", "181px", "172px", "163px", "153px", "144px", "135px", "125px", "116px", "125px", "134px", "143px", "153px", "162px", "171px", "180px", "189px", "198px");
+    else
+        document.MM_Time[0][5].values[1] = new Array(200,191,181,172,163,153,144,135,125,116,125,134,143,153,162,171,180,189,198);
+    document.MM_Time[0][5].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][5].values[0].prop2 = "style";
+        document.MM_Time[0][5].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][6] = new String("sprite");
+    document.MM_Time[0][6].slot = 4;
+    if (ns4)
+        document.MM_Time[0][6].obj = document["Layer1"] ? document["Layer1"].document["Layer5"] : document["Layer5"];
+    else if (ns5)
+        document.MM_Time[0][6].obj = document.getElementById("Layer5");
+    else
+        document.MM_Time[0][6].obj = document.all ? document.all["Layer5"] : null;
+    document.MM_Time[0][6].keyFrames = new Array(1, 15);
+    document.MM_Time[0][6].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][6].values[0] = new Array("625px", "625px", "625px", "625px", "625px", "625px", "625px", "625px", "625px", "625px", "625px", "625px", "625px", "625px", "625px");
+    else
+        document.MM_Time[0][6].values[0] = new Array(625,625,625,625,625,625,625,625,625,625,625,625,625,625,625);
+    document.MM_Time[0][6].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][6].values[1] = new Array("150px", "150px", "150px", "150px", "150px", "150px", "150px", "150px", "150px", "150px", "150px", "150px", "150px", "150px", "150px");
+    else
+        document.MM_Time[0][6].values[1] = new Array(150,150,150,150,150,150,150,150,150,150,150,150,150,150,150);
+    document.MM_Time[0][6].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][6].values[0].prop2 = "style";
+        document.MM_Time[0][6].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][7] = new String("sprite");
+    document.MM_Time[0][7].slot = 4;
+    if (ns4)
+        document.MM_Time[0][7].obj = document["Layer1"] ? document["Layer1"].document["Layer5"] : document["Layer5"];
+    else if (ns5)
+        document.MM_Time[0][7].obj = document.getElementById("Layer5");
+    else
+        document.MM_Time[0][7].obj = document.all ? document.all["Layer5"] : null;
+    document.MM_Time[0][7].keyFrames = new Array(16, 25, 33, 34);
+    document.MM_Time[0][7].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][7].values[0] = new Array("625px", "625px", "624px", "624px", "624px", "623px", "623px", "623px", "623px", "623px", "625px", "627px", "628px", "630px", "631px", "632px", "633px", "633px", "626px");
+    else
+        document.MM_Time[0][7].values[0] = new Array(625,625,624,624,624,623,623,623,623,623,625,627,628,630,631,632,633,633,626);
+    document.MM_Time[0][7].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][7].values[1] = new Array("150px", "141px", "132px", "123px", "114px", "105px", "96px", "87px", "78px", "69px", "80px", "90px", "101px", "111px", "120px", "129px", "136px", "143px", "154px");
+    else
+        document.MM_Time[0][7].values[1] = new Array(150,141,132,123,114,105,96,87,78,69,80,90,101,111,120,129,136,143,154);
+    document.MM_Time[0][7].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][7].values[0].prop2 = "style";
+        document.MM_Time[0][7].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][8] = new String("sprite");
+    document.MM_Time[0][8].slot = 5;
+    if (ns4)
+        document.MM_Time[0][8].obj = document["Layer1"] ? document["Layer1"].document["Layer6"] : document["Layer6"];
+    else if (ns5)
+        document.MM_Time[0][8].obj = document.getElementById("Layer6");
+    else
+        document.MM_Time[0][8].obj = document.all ? document.all["Layer6"] : null;
+    document.MM_Time[0][8].keyFrames = new Array(1, 15);
+    document.MM_Time[0][8].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][8].values[0] = new Array("800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px");
+    else
+        document.MM_Time[0][8].values[0] = new Array(800,800,800,800,800,800,800,800,800,800,800,800,800,800,800);
+    document.MM_Time[0][8].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][8].values[1] = new Array("100px", "100px", "100px", "100px", "100px", "100px", "100px", "100px", "100px", "100px", "100px", "100px", "100px", "100px", "100px");
+    else
+        document.MM_Time[0][8].values[1] = new Array(100,100,100,100,100,100,100,100,100,100,100,100,100,100,100);
+    document.MM_Time[0][8].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][8].values[0].prop2 = "style";
+        document.MM_Time[0][8].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][9] = new String("sprite");
+    document.MM_Time[0][9].slot = 5;
+    if (ns4)
+        document.MM_Time[0][9].obj = document["Layer1"] ? document["Layer1"].document["Layer6"] : document["Layer6"];
+    else if (ns5)
+        document.MM_Time[0][9].obj = document.getElementById("Layer6");
+    else
+        document.MM_Time[0][9].obj = document.all ? document.all["Layer6"] : null;
+    document.MM_Time[0][9].keyFrames = new Array(16, 25, 34);
+    document.MM_Time[0][9].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][9].values[0] = new Array("800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "800px", "801px", "801px", "801px", "801px", "801px", "801px");
+    else
+        document.MM_Time[0][9].values[0] = new Array(800,800,800,800,800,800,800,800,800,800,800,800,800,801,801,801,801,801,801);
+    document.MM_Time[0][9].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][9].values[1] = new Array("100px", "93px", "86px", "80px", "73px", "66px", "59px", "53px", "46px", "39px", "46px", "53px", "60px", "67px", "74px", "81px", "88px", "95px", "102px");
+    else
+        document.MM_Time[0][9].values[1] = new Array(100,93,86,80,73,66,59,53,46,39,46,53,60,67,74,81,88,95,102);
+    document.MM_Time[0][9].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][9].values[0].prop2 = "style";
+        document.MM_Time[0][9].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][10] = new String("behavior");
+    document.MM_Time[0][10].frame = 35;
+    document.MM_Time[0][10].value = "MM_timelineGoto('Timeline1','1')";
+    document.MM_Time[0].lastFrame = 35;
+    for (i=0; i<document.MM_Time.length; i++) {
+        document.MM_Time[i].ID = null;
+        document.MM_Time[i].curFrame = 0;
+        document.MM_Time[i].delay = 1000/document.MM_Time[i].fps;
+    }
+}
+//-->
+</script>
+</head>
+
+<body onload="MM_timelinePlay('Timeline1')" >
+<div id="Layer1">
+  <div id="Layer2" style="left: 101px; top: 302px;">
+    <div id="Layer9">
+      <div align="center"><span class="STYLE3"><a href="html/myself.html">个人风采</a></span></div>
+    </div>
+  <img src="images/小图片/w_副本1.jpg" width="85" height="200" /></div>
+  <div id="Layer3" style="left: 280px; top: 210px;">
+    <div class="STYLE3" id="Layer10">
+      <div align="center"><a href="html/home.html">家乡风采</a></div>
+    </div>
+  <img src="images/小图片/w_副本.jpg" width="85" height="200" /></div>
+  <div id="Layer4" style="left: 450px; top: 200px;">
+    <div class="STYLE3" id="Layer11">
+      <div align="center"><a href="html/power.html">专业技能</a></div>
+    </div>
+  <img src="images/小图片/w_副本1.jpg" width="85" height="200" /></div>
+  <div id="Layer5" style="left: 625px; top: 150px;">
+    <div class="STYLE3" id="Layer12">
+      <div align="center"><a href="html/job.html">求职意向</a></div>
+    </div>
+  <img src="images/小图片/w_副本.jpg" width="85" height="200" /></div>
+  <div id="Layer6" style="left: 800px; top: 100px;">
+    <div class="STYLE3" id="Layer13">
+      <div align="center"><a href="html/massage.html">雁过留言</a></div>
+    </div>
+  <img src="images/小图片/w_副本1.jpg" width="85" height="200" /></div>
+  <div id="Layer7"><img src="images/小图片/口红.jpg" width="120" height="75" /></div>
+</div>
+</body>
+</html>
